@@ -1,6 +1,6 @@
 " basic settings
 " https://raw.githubusercontent.com/wiki/JetBrains/ideavim/set-commands.md
-source ~/.config/nvim/init.vim
+source ~/.vimrc
 
 " handler
 
@@ -17,26 +17,23 @@ set which-key
 
 " goto
 nmap gt <action>(GotoTest)
-nmap gm <action>(MethodUp)
-nmap gM <action>(MethodDown)
 nmap gs <action>(GotoSuperMethod)
 nmap gi <action>(GotoImplementation)
-nmap gI <action>(QuickImplementations)
 nmap gd <action>(GotoDeclaration)
 nmap gD <action>(GotoTypeDeclaration)
-nmap gw ]wl
 
 " []
+" goto n/p error
 nmap [e <action>(GotoPreviousError)
 nmap ]e <action>(GotoNextError)
-nmap [u <action>(GotoPrevElementUnderCaretUsage)
-nmap ]u <action>(GotoNextElementUnderCaretUsage)
 nmap [o <action>(PreviousOccurence)
 nmap ]o <action>(NextOccurence)
-nmap [m <action>(MethodUp)
-nmap ]m <action>(MethodDown)
+" goto n/p function
+nmap [f <action>(MethodUp)
+nmap ]f <action>(MethodDown)
 nmap [c <action>(JumpToLastChange)
 nmap ]c <action>(JumpToNextChange)
+" goto n/p change
 nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [g <Action>(VcsShowPrevChangeMarker)
 
@@ -47,8 +44,6 @@ let g:WhichKeyDesc_XX = "<leader>xx Close"
 let g:WhichKeyDesc_XA = "<leader>xa CloseAll"
 let g:WhichKeyDesc_XO = "<leader>xo CloseAllButActive"
 let g:WhichKeyDesc_XP = "<leader>xp CloseUnpinned"
-nmap <Tab> <action>(NextTab)
-nmap <S-Tab> <action>(PreviousTab)
 " nmap 1<Tab> <action>(GoToTab1)
 " nmap 2<Tab> <action>(GoToTab2)
 " nmap 3<Tab> <action>(GoToTab3)
@@ -56,15 +51,15 @@ nmap <S-Tab> <action>(PreviousTab)
 " nmap 5<Tab> <action>(GoToTab5)
 " nmap 6<Tab> <action>(GoToTab6)
 " nmap 0<Tab> <action>(GoToLastTab)
-nmap <C-Tab> <action>(Switcher)
+" nmap <C-Tab> <action>(Switcher)
 nmap <leader>xx <action>(CloseContent)
 nmap <leader>xa <action>(CloseAllEditors)
 nmap <leader>xo <action>(CloseAllEditorsButActive)
 nmap <leader>xp <action>(CloseAllUnpinnedEditors)
 
-map <C-\> <action>(SplitVertically)
-map <C--> <action>(SplitHorizontally)
-map <C-BS> <action>(Unsplit)
+" map <C-\> <action>(SplitVertically)
+" map <C--> <action>(SplitHorizontally)
+" map <C-BS> <action>(Unsplit)
 
 " collapse
 " nmap zz <action>(ExpandCollapseToggleAction)
@@ -109,7 +104,6 @@ map <S-CR> :action EditorUnSelectWord<CR>
 imap <C-BS> <action>(EditorDeleteToWordStart)
 map / <action>(Replace)
 nnoremap \/ /
-" map <C-/> <action>(FindInPath) by idea
 map <A-p> <action>(ParameterInfo)
 map <A-i> <action>(Generate)
 map <A-o> <action>(FileStructurePopup)
@@ -129,9 +123,7 @@ map <A-e> <action>(ShowErrorDescription)
 map <C-i> <action>(Forward)
 map <C-o> <action>(Back)
 " format
-map == :action ReformatCode<CR>
-nmap -- <action>(CommentByLineComment)
-vmap -- <action>(CommentByLineComment)<Esc>
+map = :action ReformatCode<CR>
 
 " git
 let g:WhichKeyDesc_G = "<leader>g Git"
