@@ -23,22 +23,19 @@ nmap gd <action>(GotoDeclaration)
 nmap gD <action>(GotoTypeDeclaration)
 
 " []
-" goto n/p error
+" goto n/p
+nmap [[ <action>(MethodUp)
+nmap ]] <action>(MethodDown)
 nmap [e <action>(GotoPreviousError)
 nmap ]e <action>(GotoNextError)
 nmap [o <action>(PreviousOccurence)
 nmap ]o <action>(NextOccurence)
-" goto n/p function
-nmap [f <action>(MethodUp)
-nmap ]f <action>(MethodDown)
 nmap [c <action>(JumpToLastChange)
 nmap ]c <action>(JumpToNextChange)
-" goto n/p change
 nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [g <Action>(VcsShowPrevChangeMarker)
 
 " tab
-let g:WhichKeyDesc_Tab = "<leader><Tab> Switcher"
 let g:WhichKeyDesc_X = "<leader>x Close"
 let g:WhichKeyDesc_XX = "<leader>xx Close"
 let g:WhichKeyDesc_XA = "<leader>xa CloseAll"
@@ -47,9 +44,6 @@ let g:WhichKeyDesc_XP = "<leader>xp CloseUnpinned"
 " nmap 1<Tab> <action>(GoToTab1)
 " nmap 2<Tab> <action>(GoToTab2)
 " nmap 3<Tab> <action>(GoToTab3)
-" nmap 4<Tab> <action>(GoToTab4)
-" nmap 5<Tab> <action>(GoToTab5)
-" nmap 6<Tab> <action>(GoToTab6)
 " nmap 0<Tab> <action>(GoToLastTab)
 " nmap <C-Tab> <action>(Switcher)
 nmap <leader>xx <action>(CloseContent)
@@ -57,15 +51,16 @@ nmap <leader>xa <action>(CloseAllEditors)
 nmap <leader>xo <action>(CloseAllEditorsButActive)
 nmap <leader>xp <action>(CloseAllUnpinnedEditors)
 
-" map <C-\> <action>(SplitVertically)
+" map <C-\> <action>(SplitVrtically)
 " map <C--> <action>(SplitHorizontally)
 " map <C-BS> <action>(Unsplit)
 
 " collapse
-" nmap zz <action>(ExpandCollapseToggleAction)
 nmap zC <action>(CollapseAllRegions)
 nmap zO <action>(ExpandAllRegions)
-nmap zm <action>(MaximizeEditorInSplit) \| <action>(HideActiveWindow)
+nmap zm <action>(MaximizeEditorInSplit) \| <action>(HideAllWindows)
+nmap zp <action>(TogglePresentationMode)
+nmap zf <action>(ToggleFullScreen)
 
 " bookmark
 nmap mm <action>(ToggleBookmark)
@@ -93,74 +88,78 @@ nmap <leader>fn <action>(NewElement)
 map <leader>fw viw<leader>fw<Esc>
 vmap <leader>fw <action>(FindSelectionInPath)<Esc>
 
-
 " window by idea keymap
 " map <A-1> <action>(ActivateTerminalToolWindow)
 " map <A-BS> <action>(HideActiveWindow)
 
 " editor
-map <CR> :action EditorSelectWord<CR>
-map <S-CR> :action EditorUnSelectWord<CR>
+map <CR> <action>(EditorSelectWord)
+map <S-CR> <action>(EditorUnSelectWord)
+imap <C-CR> <action>(EditorCompleteStatement)
 imap <C-BS> <action>(EditorDeleteToWordStart)
 map / <action>(Replace)
-nnoremap \/ /
 map <A-p> <action>(ParameterInfo)
-map <A-i> <action>(Generate)
+" map <A-i> <action>(Generate) by idea
 map <A-o> <action>(FileStructurePopup)
-map <A-r> <action>(RenameElement)
 map <A-u> <action>(FindUsages)
-map <A-c> <action>(ChangeSignature)
 map <A-j> <action>(MoveStatementDown)
+imap <A-j> <action>(MoveStatementDown)
 map <A-k> <action>(MoveStatementUp)
+imap <A-k> <action>(MoveStatementUp)
+map <A-d> <action>(QuickImplementations)
+imap <A-d> <action>(QuickImplementations)
 imap <C-u> <action>($Undo)
 imap <A-p> <action>(ParameterInfo)
-imap <A-i> <action>(Generate)
-imap <C-CR> <action>(EditorCompleteStatement)
+map <A-e> <action>(ShowErrorDescription)
 imap <A-e> <action>(ShowErrorDescription)
 imap <A-/> <action>(CodeCompletion)
 " map <S-CR> <action>(EditorSplitLine)
-map <A-e> <action>(ShowErrorDescription)
 map <C-i> <action>(Forward)
 map <C-o> <action>(Back)
-" format
-map = :action ReformatCode<CR>
 
-" git
+" Refactor
+map <A-m> <action>(ExtractMethod)
+map <A-f> <action>(IntroduceField)
+map <A-v> <action>(IntroduceVariable)
+map <A-c> <action>(IntroduceConstant)
+map <A-s> <action>(ChangeSignature)
+map <A-l> <action>(Inline)
+map <A-r> <action>(RenameElement)
+map <C-r> <action>(Refactorings.QuickListPopupAction)
+map <C-m> <action>(Move)
+map <C-e> <action>(SelectInProjectView)
+" format
+map = <action>(ReformatCode) \| <action>(OptimizeImports)
+
+" Git
 let g:WhichKeyDesc_G = "<leader>g Git"
 let g:WhichKeyDesc_GR = "<leader>gr RollbackChangedLines"
 let g:WhichKeyDesc_GC = "<leader>gc CheckinProject"
 let g:WhichKeyDesc_GH = "<leader>gh ShowFileHistory"
+let g:WhichKeyDesc_GP = "<leader>gp UpdateFiles"
 nmap <leader>gr <action>(Vcs.RollbackChangedLines)
 nmap <leader>gc <action>(CheckinProject)
 nmap <leader>gh <action>(Vcs.ShowTabbedFileHistory)
+nmap <leader>gp <action>(UpdateFiles)
 
-" run
-let g:WhichKeyDesc_R = "<leader>r Run/Refactor"
-let g:WhichKeyDesc_RR = "<leader>rr Run"
-let g:WhichKeyDesc_RD = "<leader>rd Debug"
-let g:WhichKeyDesc_RB = "<leader>rb ReBuild"
-let g:WhichKeyDesc_RM = "<leader>rm ExtractMethod"
-let g:WhichKeyDesc_RC = "<leader>rc IntroduceConstant"
-let g:WhichKeyDesc_RF = "<leader>rf IntroduceField"
-let g:WhichKeyDesc_RV = "<leader>rv IntroduceVariable"
-nmap <leader>rr <action>(Rerun) \| <action>(RunClass)
-nmap <leader>rd <action>(DebugClass)
-nmap <leader>rb <action>(Debugger.ReloadFile)
-vmap <leader>rm <action>(ExtractMethod)
-vmap <leader>rc <action>(IntroduceConstant)
-vmap <leader>rf <action>(IntroduceField)
-vmap <leader>rv <action>(IntroduceVariable)
-
+" command
+let g:WhichKeyDesc_CR = "\\r Run"
+let g:WhichKeyDesc_CD = "\\d Debug"
+let g:WhichKeyDesc_CB = "\\b ReBuild"
+nmap \r <action>(Rerun) \| <action>(RunClass)
+nmap \R <action>(ChooseRunConfiguration)
+nmap \d <action>(DebugClass)
+nmap \D <action>(ChooseDebugConfiguration)
+nmap \b <action>(Debugger.ReloadFile)
+nmap \t <action>(RerunFailedTests) \| <action>(RunClass)
 " y
 let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
 let g:WhichKeyDesc_YN = "yn CopyFileName"
 nmap yp <action>(CopyAbsolutePath)
 nmap yn <action>(CopyFileName)
-
 " t
 " translation (required idea plugin: translation)
 let g:WhichKeyDesc_TS = "ts Translate"
-let g:WhichKeyDesc_TT = "tt Tree"
 nmap ts <action>($InclusiveTranslateAction)
 vmap ts <action>($EditorTranslateAction)<Esc>
-nmap tt <action>(SelectInProjectView)
+nmap tS <Action>($ShowTranslationDialogAction)
