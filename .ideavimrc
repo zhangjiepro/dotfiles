@@ -52,10 +52,6 @@ nmap <leader>xa <action>(CloseAllEditors)
 nmap <leader>xo <action>(CloseAllEditorsButActive)
 nmap <leader>xp <action>(CloseAllUnpinnedEditors)
 
-" map <C-\> <action>(SplitVrtically)
-" map <C--> <action>(SplitHorizontally)
-" map <C-BS> <action>(Unsplit)
-
 " collapse
 nmap zC <action>(CollapseAllRegions)
 nmap zO <action>(ExpandAllRegions)
@@ -133,10 +129,3 @@ let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
 let g:WhichKeyDesc_YN = "yn CopyFileName"
 nmap yp <action>(CopyAbsolutePath)
 nmap yn <action>(CopyFileName)
-
-" t
-" translation (required idea plugin: translation)
-" let g:WhichKeyDesc_TS = "ts Translate"
-" nmap ts <action>($InclusiveTranslateAction)
-" vmap ts <action>($EditorTranslateAction)<Esc>
-" nmap tS <Action>($ShowTranslationDialogAction)
