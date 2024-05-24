@@ -11,7 +11,7 @@ set smartcase
 set number
 set relativenumber
 set incsearch
-set hlsearch=false
+set nohlsearch
 set notimeout
 
 let mapleader = " "
@@ -26,7 +26,7 @@ noremap L $
 noremap J 5j
 noremap K 5k
 " noremap W 5w
-noremap B 5b
+" noremap B 5b
 noremap ,. %
 nnoremap Y y$
 nnoremap <BS> s
@@ -38,8 +38,6 @@ vnoremap > >gv
 vnoremap y ygv<esc>
 
 noremap <C-a> ggVG
-inoremap <C-a> <ESC>A
-inoremap <C-i> <ESC>I
 
 " bookmark
 nnoremap ma mA

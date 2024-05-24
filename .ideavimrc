@@ -19,6 +19,7 @@ set which-key
 nmap gt <action>(GotoTest)
 nmap gs <action>(GotoSuperMethod)
 nmap gi <action>(GotoImplementation)
+nmap gI <action>(QuickImplementations)
 nmap gd <action>(GotoDeclaration)
 nmap gD <action>(GotoTypeDeclaration)
 
@@ -67,67 +68,41 @@ nmap mm <action>(ToggleBookmark)
 nmap ms <action>(ShowBookmarks)
 
 " file action
-let g:WhichKeyDesc_F = "<leader>f File/Find"
-let g:WhichKeyDesc_FR = "<leader>fr RecentFiles"
-let g:WhichKeyDesc_FL = "<leader>fl RecentLocations"
-let g:WhichKeyDesc_FF = "<leader>ff GotoFile"
-let g:WhichKeyDesc_FC = "<leader>fc GotoClass"
-let g:WhichKeyDesc_FS = "<leader>fs SelectInProjectView"
-let g:WhichKeyDesc_FA = "<leader>fa GotoAction"
-let g:WhichKeyDesc_FH = "<leader>fh LocalHistory"
-let g:WhichKeyDesc_FW = "<leader>fw FindSelectionInPath"
-let g:WhichKeyDesc_FN = "<leader>fn NewFile"
-nmap <leader>fr <action>(RecentFiles)
-nmap <leader>fl <action>(RecentLocations)
-nmap <leader>ff <action>(GotoFile)
-" nmap <C-f> <action>(GotoFile) by idea
-nmap <leader>fc <action>(GotoClass)
-nmap <leader>fa <action>(GotoAction)
-nmap <leader>fh <action>(LocalHistory.ShowHistory)
-nmap <leader>fn <action>(NewElement)
-map <leader>fw viw<leader>fw<Esc>
-vmap <leader>fw <action>(FindSelectionInPath)<Esc>
+let g:WhichKeyDesc_GotoFile = "<leader>f GotoFile"
+nmap <leader>f <action>(GotoFile)
+" global search
+let g:WhichKeyDesc_Search = "<leader>/ Search"
+map <leader>/ <action>(FindInPath)
+vmap <leader>/ <action>(FindSelectionInPath)<Esc>
+" Explore
+let g:WhichKeyDesc_Explore = "<leader>e Explore"
+nmap <leader>e <action>(SelectInProjectView)
 
 " window by idea keymap
 " map <A-1> <action>(ActivateTerminalToolWindow)
-" map <A-BS> <action>(HideActiveWindow)
+" map <S-Esc> <action>(HideActiveWindow)
 
 " editor
 map <CR> <action>(EditorSelectWord)
 map <S-CR> <action>(EditorUnSelectWord)
-imap <C-CR> <action>(EditorCompleteStatement)
-imap <C-BS> <action>(EditorDeleteToWordStart)
-map / <action>(Replace)
-map <A-p> <action>(ParameterInfo)
-" map <A-i> <action>(Generate) by idea
-map <A-o> <action>(FileStructurePopup)
-map <A-u> <action>(FindUsages)
-map <A-j> <action>(MoveStatementDown)
-imap <A-j> <action>(MoveStatementDown)
-map <A-k> <action>(MoveStatementUp)
-imap <A-k> <action>(MoveStatementUp)
-map <A-d> <action>(QuickImplementations)
-imap <A-d> <action>(QuickImplementations)
+" imap <C-S-CR> <action>(EditorCompleteStatement) by idea
+" imap <C-BS> <action>(EditorDeleteToWordStart) by option + BS
 imap <C-u> <action>($Undo)
-imap <A-p> <action>(ParameterInfo)
-map <A-e> <action>(ShowErrorDescription)
-imap <A-e> <action>(ShowErrorDescription)
-imap <A-/> <action>(CodeCompletion)
-" map <S-CR> <action>(EditorSplitLine)
+map / <action>(Replace)
+" map <A-p> <action>(ParameterInfo) by command-p
+" map <C-CR> <action>(Generate) by idea
+" map <A-o> <action>(FileStructurePopup) by command + o idea
+" map <A-p> <action>(ParameterInfo) by command-p idea
+" map <A-e> <action>(ShowErrorDescription) by command + e idea
 map <C-i> <action>(Forward)
 map <C-o> <action>(Back)
 
+" map <C-j> <action>(MoveStatementDown) by command + j
+" map <C-k> <action>(MoveStatementUp) by command + k
+
 " Refactor
-map <A-m> <action>(ExtractMethod)
-map <A-f> <action>(IntroduceField)
-map <A-v> <action>(IntroduceVariable)
-map <A-c> <action>(IntroduceConstant)
-map <A-s> <action>(ChangeSignature)
-map <A-l> <action>(Inline)
-map <A-r> <action>(RenameElement)
-map <C-r> <action>(Refactorings.QuickListPopupAction)
-map <C-m> <action>(Move)
-map <C-e> <action>(SelectInProjectView)
+let g:WhichKeyDesc_Search = "<leader>r Refactor"
+map <leader>r <action>(Refactorings.QuickListPopupAction)
 " format
 map = <action>(ReformatCode) \| <action>(OptimizeImports)
 
@@ -152,14 +127,16 @@ nmap \d <action>(DebugClass)
 nmap \D <action>(ChooseDebugConfiguration)
 nmap \b <action>(Debugger.ReloadFile)
 nmap \t <action>(RerunFailedTests) \| <action>(RunClass)
+
 " y
 let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
 let g:WhichKeyDesc_YN = "yn CopyFileName"
 nmap yp <action>(CopyAbsolutePath)
 nmap yn <action>(CopyFileName)
+
 " t
 " translation (required idea plugin: translation)
-let g:WhichKeyDesc_TS = "ts Translate"
-nmap ts <action>($InclusiveTranslateAction)
-vmap ts <action>($EditorTranslateAction)<Esc>
-nmap tS <Action>($ShowTranslationDialogAction)
+" let g:WhichKeyDesc_TS = "ts Translate"
+" nmap ts <action>($InclusiveTranslateAction)
+" vmap ts <action>($EditorTranslateAction)<Esc>
+" nmap tS <Action>($ShowTranslationDialogAction)
