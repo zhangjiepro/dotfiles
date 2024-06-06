@@ -1,0 +1,84 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "cmd+1",
+		"command": "-workbench.action.focusFirstEditorGroup"
+	},
+	{
+		"key": "cmd+1",
+		"command": "workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "shift+cmd+e",
+		"command": "-workbench.view.explorer",
+		"when": "viewContainer.workbench.view.explorer.enabled"
+	},
+	{
+		"key": "cmd+2",
+		"command": "-workbench.action.focusSecondEditorGroup"
+	},
+	{
+		"key": "cmd+2",
+		"command": "workbench.action.terminal.toggleTerminal",
+		"when": "terminal.active"
+	},
+	{
+		"key": "ctrl+`",
+		"command": "-workbench.action.terminal.toggleTerminal",
+		"when": "terminal.active"
+	},
+	{
+		"key": "shift+cmd+o",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "cmd+p",
+		"command": "-workbench.action.quickOpen"
+	},
+	{
+		"key": "shift+cmd+o",
+		"command": "workbench.action.quickOpenNavigateNextInFilePicker",
+		"when": "inFilesPicker && inQuickOpen"
+	},
+	{
+		"key": "cmd+p",
+		"command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+		"when": "inFilesPicker && inQuickOpen"
+	},
+	{
+		"key": "a",
+		"command": "explorer.newFile",
+		"when": "filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "shift+a",
+		"command": "explorer.newFolder",
+		"when": "filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "r",
+		"command": "renameFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "d",
+		"command": "deleteFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "x",
+		"command": "filesExplorer.cut",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "y",
+		"command": "filesExplorer.copy",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+	},
+	{
+		"key": "p",
+		"command": "filesExplorer.paste",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+	}
+]

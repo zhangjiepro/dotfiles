@@ -1,0 +1,107 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.guides.bracketPairs": "active",
+  "editor.stickyScroll.enabled": true,
+  "editor.smoothScrolling": true,
+  "editor.accessibilitySupport": "off",
+  "editor.guides.indentation": false,
+  "editor.wordWrap": "off",
+  "editor.cursorStyle": "line",
+  "editor.tabSize": 8,
+  "editor.insertSpaces": false,
+  "editor.renderWhitespace": "none",
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "on",
+    "strings": "on"
+  },
+  "editor.minimap.autohide": true,
+  "editor.linkedEditing": true,
+  "vim.vimrc.enable": true,
+  "vim.leader": "<space>",
+  "vim.flash.enable": true,
+  "vim.flash.ignorecase": true,
+  "vim.useSystemClipboard": false,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["tab"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["shift", "tab"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<Leader>", "e"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    },
+    {
+      "before": ["<Leader>", "/"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<Leader>", "<Leader>"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["="],
+      "command": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["y", "p"],
+      "commands": ["copyFilePath"]
+    },
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.autoSave": "afterDelay",
+  "tailwindCSS.emmetCompletions": true,
+  "update.enableWindowsBackgroundUpdates": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontFamily": "Fira Code, SymbolsNFM",
+  "editor.fontLigatures": true,
+  "window.titleBarStyle": "native",
+
+  "apc.font.family": "Fira Code",
+  "apc.electron": {
+    "frame": false,
+    "titleBarStyle": "hiddenInset",
+    "trafficLightPosition": {
+      "x": 10,
+      "y": 10
+    }
+  },
+  "apc.activityBar": {
+    "size": 90,
+    "itemSize": 33
+  },
+  "apc.statusBar": {
+    "position": "editor-bottom",
+    "height": 20,
+    "fontSize": 10
+  },
+  "apc.stylesheet": {
+    ".mac .sidebar .composite-bar-container": "padding-left: 70px",
+    ".mac .inline-titlebar-placeholder": "padding-left: 0 !important",
+  },
+  "apc.listRow": {
+    "lists": [
+      "explorer-folders-view"
+    ],
+    "height": 25,
+    "fontSize": 13
+  },
+  "workbench.iconTheme": "quill-icons",
+  "workbench.colorTheme": "Ayu Light",
+  "workbench.activityBar.location": "top",
+  "workbench.statusBar.visible": false,
+  "window.customTitleBarVisibility": "never"
+}

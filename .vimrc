@@ -13,8 +13,10 @@ set relativenumber
 set incsearch
 set nohlsearch
 set notimeout
+set clipboard+=unnamed
 
 let mapleader = " "
+" nnoremap <Space> <Nop>
 
 nnoremap Q :q<CR>
 noremap ; :
@@ -43,7 +45,6 @@ noremap <C-a> ggVG
 nnoremap ma mA
 nnoremap 'a 'A
 
-
 " window
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
@@ -60,4 +61,3 @@ nnoremap ]<space> o<esc>k
 
 nnoremap <Tab> :tabnext<CR>
 nnoremap <S-Tab> :tabprev<CR>
-
