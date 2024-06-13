@@ -15,6 +15,8 @@ set highlightedyank
 let g:highlightedyank_highlight_duration = "800"
 set which-key
 
+nnoremap <leader><Esc> <Nop>
+
 " goto
 let g:WhichKeyDesc_Goto_Test = "gt GotoTest"
 let g:WhichKeyDesc_Goto_SuperMethod = "gs GotoSuperMethod"
@@ -22,12 +24,12 @@ let g:WhichKeyDesc_Goto_Implementation = "gi GotoImplementation"
 let g:WhichKeyDesc_Goto_QuickImplementations = "gI QuickImplementations"
 let g:WhichKeyDesc_Goto_Declaration = "gd GotoDeclaration"
 let g:WhichKeyDesc_Goto_TypeDeclaration = "gD GotoTypeDeclaration"
-nmap gt <action>(GotoTest)
-nmap gs <action>(GotoSuperMethod)
-nmap gi <action>(GotoImplementation)
-nmap gI <action>(QuickImplementations)
-nmap gd <action>(GotoDeclaration)
-nmap gD <action>(GotoTypeDeclaration)
+nnoremap gt :action GotoTest<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gI :action QuickImplementations<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gD :action GotoTypeDeclaration<CR>
 
 " []
 " goto n/p
@@ -41,14 +43,14 @@ let g:WhichKeyDesc_Right_Method = "]] Method"
 let g:WhichKeyDesc_Right_Error = "]e Error"
 let g:WhichKeyDesc_Right_Change = "]c Change"
 let g:WhichKeyDesc_Right_Vcs = "]g Vcs"
-nmap [[ <action>(MethodUp)
-nmap ]] <action>(MethodDown)
-nmap [e <action>(GotoPreviousError)
-nmap ]e <action>(GotoNextError)
-nmap [c <action>(JumpToLastChange)
-nmap ]c <action>(JumpToNextChange)
-nmap ]g <Action>(VcsShowNextChangeMarker)
-nmap [g <Action>(VcsShowPrevChangeMarker)
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [c :action JumpToLastChange<CR>
+nnoremap ]c :action JumpToNextChange<CR>
+nnoremap ]g :action VcsShowNextChangeMarker<CR>
+nnoremap [g :action VcsShowPrevChangeMarker<CR>
 
 " tab
 let g:WhichKeyDesc_Leader_X = "<leader>x Close"
@@ -56,11 +58,14 @@ let g:WhichKeyDesc_Leader_XX = "<leader>xx Close"
 let g:WhichKeyDesc_Leader_XA = "<leader>xa CloseAll"
 let g:WhichKeyDesc_Leader_XO = "<leader>xo CloseAllButActive"
 let g:WhichKeyDesc_Leader_XP = "<leader>xp CloseUnpinned"
-" nmap <C-Tab> <action>(Switcher)
-nmap <leader>xx <action>(CloseContent)
-nmap <leader>xa <action>(CloseAllEditors)
-nmap <leader>xo <action>(CloseAllEditorsButActive)
-nmap <leader>xp <action>(CloseAllUnpinnedEditors)
+let g:WhichKeyDesc_Leader_XN = "<leader>xn CloseNotifications"
+" nmap <C-Tab> :action Switcher<CR>
+nnoremap <leader>xx :action CloseContent<CR>
+nnoremap <leader>xa :action CloseAllEditors<CR>
+nnoremap <leader>xo :action CloseAllEditorsButActive<CR>
+nnoremap <leader>xp :action CloseAllUnpinnedEditors<CR>
+nnoremap <leader>xn :action CloseAllNotifications<CR>
+nnoremap <leader>x<Esc> <Nop>
 
 " collapse
 let g:WhichKeyDesc_Z_CollapseAll = "zC CollapseAll"
@@ -68,63 +73,66 @@ let g:WhichKeyDesc_Z_ExpandAll = "zO ExpandAll"
 let g:WhichKeyDesc_Z_MaxWindow = "zm MaxWindow"
 let g:WhichKeyDesc_Z_TogglePresentationMode = "zp TogglePresentationMode"
 let g:WhichKeyDesc_Z_ToggleFullScreen = "zf ToggleFullScreen"
-nmap zC <action>(CollapseAllRegions)
-nmap zO <action>(ExpandAllRegions)
-nmap zm <action>(MaximizeEditorInSplit) \| <action>(HideAllWindows)
-nmap zp <action>(TogglePresentationMode)
-nmap zf <action>(ToggleFullScreen)
+nnoremap zC :action CollapseAllRegions<CR>
+nnoremap zO :action ExpandAllRegions<CR>
+nnoremap zm :action MaximizeEditorInSplit<CR> \| :action HideAllWindows<CR>
+nnoremap zp :action TogglePresentationMode<CR>
+nnoremap zf :action ToggleFullScreen<CR>
 
  bookmark
 let g:WhichKeyDesc_M_ToggleBookmark = "mm ToggleBookmark"
 let g:WhichKeyDesc_M_ShowBookmarks = "ms ShowBookmarks"
-nmap mm <action>(ToggleBookmark)
-nmap ms <action>(ShowBookmarks)
+nnoremap mm :action ToggleBookmark<CR>
+nnoremap ms :action ShowBookmarks<CR>
 
 " file action
 let g:WhichKeyDesc_Leader_GotoFile = "<leader><Space> GotoFile"
-nmap <leader><Space> <action>(GotoFile)
+nnoremap <leader><Space> :action GotoFile<CR>
 " global search
 let g:WhichKeyDesc_Leader_Search = "<leader>/ Search"
-map <leader>/ <action>(FindInPath)
-vmap <leader>/ <action>(FindSelectionInPath)<c>
+noremap <leader>/ :action FindInPath<CR>
+vnoremap <leader>/ :action FindSelectionInPath<CR>
 " Explore
 let g:WhichKeyDesc_Leader_Explore = "<leader>e Explore"
-nmap <leader>e <action>(SelectInProjectView)
+nnoremap <leader>e :action SelectInProjectView<CR>
 
 " window by idea keymap
-" map <A-1> <action>(ActivateTerminalToolWindow)
-" map <S-Esc> <action>(HideActiveWindow)
+" map <A-1> :action ActivateTerminalToolWindow<CR>
+" map <S-Esc> :action HideActiveWindow<CR>
 
 " editor
-map <CR> <action>(EditorSelectWord)
-map <S-CR> <action>(EditorUnSelectWord)
-" imap <C-S-CR> <action>(EditorCompleteStatement) by idea
+noremap <CR> :action EditorSelectWord<CR>
+noremap <S-CR> :action EditorUnSelectWord<CR>
+" imap <C-S-CR> :action EditorCompleteStatement<CR> by idea
 imap <C-u> <action>($Undo)
-map / <action>(Replace)
-" map <A-p> <action>(ParameterInfo) by command-p
-" map <C-CR> <action>(Generate) by idea
-" map <A-o> <action>(FileStructurePopup) by command + o idea
-" map <A-p> <action>(ParameterInfo) by command-p idea
-" map <A-e> <action>(ShowErrorDescription) by command + e idea
-map <C-i> <action>(Forward)
-map <C-o> <action>(Back)
+noremap / :action Replace<CR>
+" map <A-p> :action ParameterInfo<CR> by command-p
+" map <C-CR> :action Generate<CR> by idea
+" map <A-o> :action FileStructurePopup<CR> by command + o idea
+" map <A-p> :action ParameterInfo<CR> by command-p idea
+" map <A-e> :action ShowErrorDescription<CR> by command + e idea
+nnoremap <C-i> :action Forward<CR>
+nnoremap <C-o> :action Back<CR>
 
-" map <C-j> <action>(MoveStatementDown) by command + j
-" map <C-k> <action>(MoveStatementUp) by command + k
+" map <C-j> :action MoveStatementDown<CR> by command + j
+" map <C-k> :action MoveStatementUp<CR> by command + k
 
 " format
-map = <action>(ReformatCode) \| <action>(OptimizeImports)
+noremap = :action ReformatCode \| :action OptimizeImports<CR>
 
 " Git
 let g:WhichKeyDesc_Leader_G = "<leader>g Git"
+let g:WhichKeyDesc_Leader_GG = "<leader>gg Actions"
 let g:WhichKeyDesc_Leader_GR = "<leader>gr RollbackChangedLines"
 let g:WhichKeyDesc_Leader_GC = "<leader>gc CheckinProject"
 let g:WhichKeyDesc_Leader_GH = "<leader>gh ShowFileHistory"
 let g:WhichKeyDesc_Leader_GP = "<leader>gp UpdateFiles"
-nmap <leader>gr <action>(Vcs.RollbackChangedLines)
-nmap <leader>gc <action>(CheckinProject)
-nmap <leader>gh <action>(Vcs.ShowTabbedFileHistory)
-nmap <leader>gp <action>(UpdateFiles)
+nnoremap <leader>gg :action Vcs.QuickListPopupAction<CR>
+nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>gc :action CheckinProject<CR>
+nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>gp :action UpdateFiles<CR>
+nnoremap <leader>g<Esc> <Nop>
 
 " command
 let g:WhichKeyDesc_CR = "\\r Run"
@@ -133,15 +141,15 @@ let g:WhichKeyDesc_CD = "\\d Debug"
 let g:WhichKeyDesc_CDC = "\\D DebugChoose"
 let g:WhichKeyDesc_CB = "\\b ReBuild"
 " let g:WhichKeyDesc_CT = "\\t RunTest"
-nmap \r <action>(RunClass)
-nmap \R <action>(ChooseRunConfiguration)
-nmap \d <action>(DebugClass)
-nmap \D <action>(ChooseDebugConfiguration)
-nmap \b <action>(Debugger.ReloadFile)
-" nmap \t <action>(RerunFailedTests)
+nnoremap \r :action RunClass<CR>
+nnoremap \R :action ChooseRunConfiguration<CR>
+nnoremap \d :action DebugClass<CR>
+nnoremap \D :action ChooseDebugConfiguration<CR>
+nnoremap \b :action Debugger.ReloadFile<CR>
+" nmap \t :action RerunFailedTests<CR>
 
 " y
 let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
 let g:WhichKeyDesc_YN = "yn CopyFileName"
-nmap yp <action>(CopyAbsolutePath)
-nmap yn <action>(CopyFileName)
+nnoremap yp :action CopyAbsolutePath<CR>
+nnoremap yn :action CopyFileName<CR>

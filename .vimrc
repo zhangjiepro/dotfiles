@@ -16,7 +16,6 @@ set notimeout
 set clipboard+=unnamed
 
 let mapleader = " "
-" nnoremap <Space> <Nop>
 
 nnoremap Q :q<CR>
 noremap ; :
@@ -29,6 +28,7 @@ noremap J 5j
 noremap K 5k
 " noremap W 5w
 " noremap B 5b
+nnoremap x "_x
 noremap ,. %
 nnoremap Y y$
 nnoremap <BS> s
@@ -52,10 +52,15 @@ nnoremap sh <C-w>h
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
+nnoremap s<Esc> <Nop>
 
 " []
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
+nnoremap [{ F{
+nnoremap ]{ f{
+nnoremap [( F(
+nnoremap ]( f(
 
 "  noremap <leader><CR> :nohlsearch<CR>
 
