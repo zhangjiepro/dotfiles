@@ -33,12 +33,10 @@ nnoremap gD :action GotoTypeDeclaration<CR>
 
 " []
 " goto n/p
-let g:WhichKeyDesc_Left_Space = "[<Space> Space"
 let g:WhichKeyDesc_Left_Method = "[[ Method"
 let g:WhichKeyDesc_Left_Error = "[e Error"
 let g:WhichKeyDesc_Left_Change = "[c Change"
 let g:WhichKeyDesc_Left_Vcs = "[g Vcs"
-let g:WhichKeyDesc_Right_Space = "]<Space> Space"
 let g:WhichKeyDesc_Right_Method = "]] Method"
 let g:WhichKeyDesc_Right_Error = "]e Error"
 let g:WhichKeyDesc_Right_Change = "]c Change"
@@ -95,6 +93,9 @@ vnoremap <leader>/ :action FindSelectionInPath<CR>
 " Explore
 let g:WhichKeyDesc_Leader_Explore = "<leader>e Explore"
 nnoremap <leader>e :action SelectInProjectView<CR>
+" Refactor
+let g:WhichKeyDesc_Leader_Refactor = "<leader>r Refactor"
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
 
 " window by idea keymap
 " map <A-1> :action ActivateTerminalToolWindow<CR>
@@ -106,19 +107,21 @@ noremap <S-CR> :action EditorUnSelectWord<CR>
 " imap <C-S-CR> :action EditorCompleteStatement<CR> by idea
 imap <C-u> <action>($Undo)
 noremap / :action Replace<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap R :action RenameElement<CR>
+
 " map <A-p> :action ParameterInfo<CR> by command-p
 " map <C-CR> :action Generate<CR> by idea
 " map <A-o> :action FileStructurePopup<CR> by command + o idea
 " map <A-p> :action ParameterInfo<CR> by command-p idea
 " map <A-e> :action ShowErrorDescription<CR> by command + e idea
-nnoremap <C-i> :action Forward<CR>
-nnoremap <C-o> :action Back<CR>
-
 " map <C-j> :action MoveStatementDown<CR> by command + j
 " map <C-k> :action MoveStatementUp<CR> by command + k
 
 " format
-noremap = :action ReformatCode \| :action OptimizeImports<CR>
+nnoremap = :action ReformatCode<CR> \| :action OptimizeImports<CR>
+vnoremap = :action ReformatCode<CR>
 
 " Git
 let g:WhichKeyDesc_Leader_G = "<leader>g Git"
@@ -135,18 +138,21 @@ nnoremap <leader>gp :action UpdateFiles<CR>
 nnoremap <leader>g<Esc> <Nop>
 
 " command
-let g:WhichKeyDesc_CR = "\\r Run"
-let g:WhichKeyDesc_CRC = "\\R RunChoose"
-let g:WhichKeyDesc_CD = "\\d Debug"
-let g:WhichKeyDesc_CDC = "\\D DebugChoose"
-let g:WhichKeyDesc_CB = "\\b ReBuild"
-" let g:WhichKeyDesc_CT = "\\t RunTest"
-nnoremap \r :action RunClass<CR>
-nnoremap \R :action ChooseRunConfiguration<CR>
-nnoremap \d :action DebugClass<CR>
-nnoremap \D :action ChooseDebugConfiguration<CR>
-nnoremap \b :action Debugger.ReloadFile<CR>
-" nmap \t :action RerunFailedTests<CR>
+let g:WhichKeyDesc_CR = ",r Run"
+let g:WhichKeyDesc_CRC = ",R RunChoose"
+let g:WhichKeyDesc_CD = ",d Debug"
+let g:WhichKeyDesc_CDC = ",D DebugChoose"
+let g:WhichKeyDesc_CB = ",b ToggleLineBreakpoint"
+let g:WhichKeyDesc_CC = ",c Compile"
+let g:WhichKeyDesc_CS = ",c Stop"
+" let g:WhichKeyDesc_CT = ",t RunTest"
+nnoremap ,r :action RunClass<CR>
+nnoremap ,R :action ChooseRunConfiguration<CR>
+nnoremap ,d :action DebugClass<CR>
+nnoremap ,D :action ChooseDebugConfiguration<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,c :action CompileDirty<CR>
+" nmap ,t :action RerunFailedTests<CR>
 
 " y
 let g:WhichKeyDesc_YP = "yp CopyAbsolutePath"
